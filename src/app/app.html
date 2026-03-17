@@ -1,211 +1,486 @@
-<nav class="fixed w-full z-[100] backdrop-blur-xl bg-slate-900/40 border-b border-white/5 p-4 transition-all">
+<nav class="fixed w-full z-[120] backdrop-blur-xl bg-slate-900/40 border-b border-white/5 p-4 transition-all">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     
-    <div class="flex items-center gap-4 logo-container">
-      <img src="logo-dasa.png" alt="Dasa Logo" class="h-10 w-10 md:h-12 md:w-12 object-cover border border-white/10 shadow-2xl">
+    <div class="flex items-center gap-4 logo-container cursor-pointer" (click)="scrollTo('top')">
+      <img src="logo-dasa.png" alt="Dasa Logo" class="h-10 w-10 md:h-12 md:w-12 object-cover border border-white/10 shadow-2xl rounded-lg">
       <div class="text-xl md:text-2xl font-black tracking-tighter text-white uppercase">
-        DA<span class="dasa-gradient-aura">SA</span>
+        <span class="dasa-gradient-aura">DA</span>SA
       </div>
     </div>
     
     <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-400">
-      <a href="#perche-noi" class="hover:text-emerald-400 transition-all">Perché Noi</a>
-      <a href="#tech" class="hover:text-blue-400 transition-all">Tecnologie</a>
-      <a href="#progetti" class="hover:text-emerald-400 transition-all">Progetti</a>
+      <a (click)="scrollTo('perche-noi')" class="hover:text-emerald-400 transition-all cursor-pointer">Perché Noi</a>
+      <a (click)="scrollTo('servizi')" class="hover:text-blue-400 transition-all cursor-pointer">Tecnologie</a>
+      <a (click)="scrollTo('progetti')" class="hover:text-emerald-400 transition-all cursor-pointer">Progetti</a>
     </div>
 
-    <div class="flex items-center gap-4 md:gap-6">
-      <a href="https://www.instagram.com/dasa_devv/" target="_blank" class="hidden sm:block text-slate-400 hover:text-pink-500 transition-all transform hover:scale-110">
+    <div class="flex items-center gap-2 md:gap-6">
+      <a href="https://www.instagram.com/dasa_devv/" target="_blank" class="text-slate-400 hover:text-pink-500 transition-all transform hover:scale-110 p-2">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849s.012-3.584.07-4.849c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
 
-      <button (click)="isMenuOpen = !isMenuOpen" class="md:hidden text-white p-2 z-[120] relative focus:outline-none">
+      <button (click)="isMenuOpen = !isMenuOpen" class="md:hidden text-white p-2 z-[130] relative focus:outline-none">
         <svg class="w-8 h-8 transition-transform duration-300" [class.rotate-90]="isMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path [attr.d]="isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" 
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          <path [attr.d]="isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
         </svg>
       </button>
 
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dasadev.studio@gmail.com" target="_blank" class="hidden md:block border border-emerald-500/50 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all uppercase tracking-tighter">
-        Contattaci
-      </a>
+      <a href="mailto:dasadev.studio@gmail.com" class="hidden md:block border border-emerald-500/50 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all uppercase tracking-tighter">Contattaci</a>
     </div>
-  </div>
-
-  <div class="fixed inset-0 h-screen w-full bg-slate-950/fb backdrop-blur-2xl z-[100] flex flex-col items-center justify-center gap-8 transition-all duration-500 md:hidden border-x-8 border-emerald-500/10"
-       [class.opacity-100]="isMenuOpen"
-       [class.translate-x-0]="isMenuOpen"
-       [class.opacity-0]="!isMenuOpen"
-       [class.translate-x-full]="!isMenuOpen"
-       [class.pointer-events-auto]="isMenuOpen"
-       [class.pointer-events-none]="!isMenuOpen">
-    
-    <div class="absolute w-64 h-64 bg-emerald-500/10 blur-[120px] rounded-full pointer-none"></div>
-
-    <a href="#perche-noi" (click)="isMenuOpen = false" class="text-3xl font-black text-white uppercase tracking-tighter hover:text-emerald-400 transition-colors">Perché Noi</a>
-    <a href="#tech" (click)="isMenuOpen = false" class="text-3xl font-black text-white uppercase tracking-tighter hover:text-blue-400 transition-colors">Tecnologie</a>
-    <a href="#progetti" (click)="isMenuOpen = false" class="text-3xl font-black text-white uppercase tracking-tighter hover:text-emerald-400 transition-colors">Progetti</a>
-    
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dasadev.studio@gmail.com" target="_blank" 
-       class="mt-4 bg-emerald-500 text-white px-10 py-4 rounded-2xl font-black text-lg uppercase tracking-widest shadow-2xl shadow-emerald-500/30">
-       Contattaci
-    </a>
   </div>
 </nav>
 
-<section id="top" class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-  <div class="absolute w-[500px] h-[500px] bg-emerald-500/10 blur-[150px] rounded-full -top-20 -left-20 animate-pulse"></div>
+<div class="fixed inset-0 h-screen w-full bg-slate-950/98 backdrop-blur-2xl z-[115] flex flex-col items-center justify-center p-8 transition-all duration-500 md:hidden"
+     [class.translate-y-0]="isMenuOpen"
+     [class.opacity-100]="isMenuOpen"
+     [class.translate-y-[-100%]]="!isMenuOpen"
+     [class.opacity-0]="!isMenuOpen"
+     [class.pointer-events-auto]="isMenuOpen"
+     [class.pointer-events-none]="!isMenuOpen">
   
-  <h1 class="text-5xl md:text-9xl font-black text-white mb-8 tracking-tighter reveal uppercase">
-    <span class="dasa-gradient-neon typewriter">{{ dynamicText }}</span>
-  </h1>
+  <div class="flex flex-col items-center gap-10 text-center">
+    <a (click)="scrollTo('perche-noi')" class="text-4xl font-black text-white uppercase tracking-tighter hover:text-emerald-400 transition-colors cursor-pointer">Perché Noi</a>
+    <a (click)="scrollTo('servizi')" class="text-4xl font-black text-white uppercase tracking-tighter hover:text-blue-400 transition-colors cursor-pointer">Tecnologie</a>
+    <a (click)="scrollTo('progetti')" class="text-4xl font-black text-white uppercase tracking-tighter hover:text-emerald-400 transition-colors cursor-pointer">Progetti</a>
+    <a (click)="scrollTo('contatti')" class="text-4xl font-black text-white uppercase tracking-tighter hover:text-pink-400 transition-colors cursor-pointer">Contatti</a>
+    
+    <a href="mailto:dasadev.studio@gmail.com" (click)="isMenuOpen = false" class="mt-4 bg-emerald-500 text-slate-950 px-10 py-4 rounded-2xl font-black uppercase shadow-[0_0_30px_rgba(16,185,129,0.4)] active:scale-95 transition-transform">
+      Scrivici Ora
+    </a>
+  </div>
+</div>
 
-  <p class="text-slate-400 text-lg md:text-xl max-w-xl reveal" style="transition-delay: 0.2s">
-    Sviluppo di siti web e app su misura per te, con tecnologie all'avanguardia e performance estreme. Dimentica i prefabbricati, qui si fa sul serio. 
+<section id="top" 
+         [class.hero-fade-out]="isExploring" 
+         class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden bg-slate-950 transition-all duration-1000">
+  
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="grid-background opacity-20"></div>
+    <div class="absolute w-[600px] h-[600px] bg-emerald-500/10 blur-[120px] rounded-full top-[-10%] left-[-10%] animate-slow-drift"></div>
+    <div class="absolute w-[500px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full bottom-[-10%] right-[-10%] animate-slow-drift animation-delay-2000"></div>
+    <div class="hero-glow"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl w-full flex flex-col items-center">
+    
+    <div class="reveal inline-flex items-center gap-2 px-4 py-2 mb-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl group hover:border-emerald-500/50 transition-all duration-500 cursor-default">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300 group-hover:text-emerald-400 transition-colors">Web&App development studio</span>
+    </div>
+
+    <h1 class="reveal text-7xl md:text-[10rem] font-black text-white mb-8 tracking-tighter leading-[0.85] uppercase italic select-none">
+      <span class="dasa-shimmer filter drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">DASA</span>
+    </h1>
+
+    <div class="max-w-4xl mx-auto mt-10 mb-16 px-6 relative group">
+  <div class="absolute -left-4 top-0 h-full w-[1px] bg-gradient-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-500/0"></div>
+
+  <p class="text-slate-400 text-lg md:text-2xl leading-relaxed font-medium reveal-text">
+    <span class="block mb-4 opacity-0 animate-slide-in" style="animation-delay: 100ms;">
+      Trasformiamo visioni ambiziose in 
+      <span class="relative inline-block text-white group/under cursor-default">
+        esperienze digitali su misura
+        <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-emerald-500 transition-all duration-700 ease-out group-hover/under:w-full"></span>
+        <span class="absolute -bottom-1 right-0 w-0 h-[2px] bg-blue-500 transition-all duration-700 ease-out delay-100 group-hover/under:w-full"></span>
+      </span>.
+    </span>
+    
+    <span class="block opacity-0 animate-slide-in" style="animation-delay: 300ms;">
+      Sviluppiamo 
+      <span class="text-slate-200 border-b border-white/5 hover:border-emerald-500/50 transition-colors cursor-help">siti web</span>, 
+      <span class="text-slate-200 border-b border-white/5 hover:border-blue-500/50 transition-colors cursor-help">web app</span> e 
+      <span class="text-slate-200 border-b border-white/5 hover:border-pink-500/50 transition-colors cursor-help">piattaforme gestionali</span> 
+      <span class="relative px-2">
+        <span class="relative z-10 italic text-emerald-400 font-bold">partendo da una pagina bianca</span>
+        <span class="absolute inset-0 bg-emerald-500/5 -skew-x-12 scale-x-105"></span>
+      </span>, 
+      unendo un design d'impatto a un'architettura tecnica su 
+      <span class="inline-flex items-center gap-2 text-white bg-slate-900 border border-white/10 px-3 py-1 rounded-md hover:border-emerald-500/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] group/vps cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Cloud VPS dedicati
+      </span>.
+    </span>
   </p>
+</div>
+
+    <div class="reveal" style="transition-delay: 0.4s">
+      <button (click)="startExplore()" 
+              class="group relative flex items-center justify-center px-12 py-6 bg-transparent overflow-hidden rounded-full border border-white/10 transition-all duration-500 hover:border-emerald-500/50 hover:scale-110 active:scale-95 shadow-2xl cursor-pointer">
+        
+        <div id="expand-circle" 
+             [class.expand-active]="isExploring" 
+             class="absolute inset-0 bg-emerald-500 scale-0 rounded-full transition-transform duration-[1200ms] cubic-bezier(0.9, 0, 0.1, 1) pointer-events-none z-20">
+        </div>
+        
+        <div class="absolute inset-0 bg-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
+        
+        <span class="relative z-10 flex items-center gap-3 text-white group-hover:text-slate-950 font-black uppercase text-sm tracking-[0.4em] transition-colors duration-500">
+          Esplora
+          <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block opacity-30">
+    <div class="w-6 h-10 border-2 border-slate-500 rounded-full flex justify-center p-1">
+      <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-scroll-dot"></div>
+    </div>
+  </div>
 </section>
-<section id="perche-noi" class="py-32 px-6 bg-white/5 border-y border-white/5" style="scroll-margin-top: 80px;">
+
+<section id="perche-noi" class="py-32 px-6 bg-slate-950 border-y border-white/5 relative overflow-hidden" style="scroll-margin-top: 80px;">
+  <div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500/10 blur-[120px] rounded-full"></div>
+  
   <div class="max-w-7xl mx-auto">
     <div class="grid md:grid-cols-2 gap-20 items-center">
       
       <div class="reveal">
-        <h2 class="text-5xl font-black text-white mb-8 uppercase tracking-tighter">
-          Perché scegliere <br><span class="dasa-gradient-aura">DASA Studio?</span>
+        <h2 class="text-5xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-[0.9]">
+          Oltre i limiti del <br><span class="dasa-gradient-aura">Web Standard.</span>
         </h2>
-        
-        <p class="text-slate-400 text-lg leading-relaxed mb-8 font-medium">
-          Mentre molti si accontentano di siti prefabbricati e privi di anima, noi di 
-          <span class="text-white font-black">DASA</span> pratichiamo la 
-          <span class="dasa-gradient-neon font-black">sartorialità digitale</span>.
+        <p class="text-slate-400 text-lg leading-relaxed mb-10 font-medium max-w-lg">
+          Non usiamo template pronti. Costruiamo soluzioni su misura per chi non si accontenta della normalità e cerca un vantaggio competitivo reale.
         </p>
 
-        <div class="space-y-6">
-          <div class="flex gap-4 items-start">
-            <svg class="w-6 h-6 text-emerald-400 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-            </svg>
+        <div class="space-y-10">
+          <div class="group flex gap-6 items-start transition-transform hover:translate-x-2 duration-300">
+            <div class="p-4 rounded-2xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all shadow-lg">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
             <div>
-              <h4 class="text-white font-bold uppercase tracking-tighter">Performance Estreme</h4>
-              <p class="text-slate-500 text-sm font-medium">Codice ottimizzato per caricamenti istantanei e SEO nativo.</p>
+              <h4 class="text-white font-black uppercase tracking-tighter text-2xl mb-1">Performance Estrema</h4>
+              <p class="text-slate-500 text-base leading-relaxed">
+                Ogni millisecondo conta. Ottimizziamo il codice per caricamenti istantanei che migliorano l'esperienza utente e il posizionamento sui motori di ricerca.
+              </p>
             </div>
           </div>
 
-          <div class="flex gap-4 items-start">
-            <svg class="w-6 h-6 text-blue-500 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-            </svg>
+          <div class="group flex gap-6 items-start transition-transform hover:translate-x-2 duration-300">
+            <div class="p-4 rounded-2xl bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-slate-950 transition-all shadow-lg">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+              </svg>
+            </div>
             <div>
-              <h4 class="text-white font-bold uppercase tracking-tighter">Scalabilità Totale</h4>
-              <p class="text-slate-500 text-sm font-medium">Architetture solide pronte a crescere insieme al tuo business.</p>
+              <h4 class="text-white font-black uppercase tracking-tighter text-2xl mb-1">Server & Sicurezza</h4>
+              <p class="text-slate-500 text-base leading-relaxed">
+                Utilizziamo infrastrutture cloud blindate. Niente plugin pesanti o vulnerabili: solo ambienti sicuri, scalabili e monitorati h24 per proteggere i tuoi dati.
+              </p>
+            </div>
+          </div>
+
+          <div class="group flex gap-6 items-start transition-transform hover:translate-x-2 duration-300">
+            <div class="p-4 rounded-2xl bg-pink-500/10 text-pink-400 group-hover:bg-pink-500 group-hover:text-slate-950 transition-all shadow-lg">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-black uppercase tracking-tighter text-2xl mb-1">Sartorialità Digitale</h4>
+              <p class="text-slate-500 text-base leading-relaxed">
+                Il tuo progetto è unico. Sviluppiamo funzionalità personalizzate sulle tue reali esigenze di business, garantendo un'identità grafica che non somiglia a nessun'altra.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="relative reveal" style="transition-delay: 0.4s">
-        <div class="aspect-square dasa-gradient-aura opacity-20 blur-3xl absolute inset-0"></div>
-        
-        <div class="relative bg-slate-900 card-hover-border p-10 rounded-3xl shadow-2xl transform rotate-3 transition-all cursor-default">
-          <svg class="w-12 h-12 text-emerald-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>
-          <h3 class="text-3xl font-black text-white mb-4 uppercase tracking-tighter">Velocità Estrema</h3>
-          <p class="text-slate-400 font-medium">I nostri siti caricano in meno di 1 secondo. Più clienti e miglior SEO.</p>
+      <div class="relative reveal flex justify-center items-center" style="transition-delay: 0.4s">
+        <div class="aspect-square dasa-gradient-aura opacity-30 blur-[100px] absolute inset-0 animate-pulse"></div>
+        <div class="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 p-12 rounded-[2rem] shadow-2xl floating-card transform rotate-2 hover:rotate-0 transition-all duration-700 group">
+          <div class="w-20 h-20 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+            <svg class="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-5xl font-black text-white mb-4 uppercase tracking-tighter">100/100</h3>
+          <p class="text-slate-400 font-medium text-lg leading-snug">
+            È l'eccellenza che garantiamo nei test di <span class="text-emerald-400 italic">Google PageSpeed</span>. Non accettiamo compromessi sulla qualità tecnica.
+          </p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-<section id="tech" class="py-32 px-6" style="scroll-margin-top: 80px;">
-  <div class="max-w-7xl mx-auto text-center mb-20 reveal">
-    <h2 class="text-4xl font-black text-white uppercase tracking-tighter">Il Nostro <span class="dasa-gradient-neon">DNA Tecnologico</span></h2>
+
+<section id="servizi" class="py-32 px-6 border-t border-white/5 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-20 reveal">
+      <h2 class="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none">
+        I Nostri <br><span class="dasa-gradient-neon">Core Services</span>
+      </h2>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="group border-b border-white/10 py-12 flex flex-col md:flex-row md:items-center justify-between hover:px-8 transition-all duration-500 cursor-pointer relative item-service">
+        <div class="flex items-center gap-8 relative z-10">
+          <span class="text-slate-600 font-mono text-xl">01</span>
+          <h3 class="text-4xl md:text-6xl font-black text-white uppercase group-hover:text-emerald-400 transition-colors">Web Apps</h3>
+        </div>
+        <p class="text-slate-400 max-w-md mt-4 md:mt-0 font-medium relative z-10 leading-relaxed">
+          Sviluppiamo piattaforme web ad alte prestazioni utilizzando Angular. Creiamo interfacce reattive, scalabili e ottimizzate per gestire flussi di dati complessi con la massima fluidità.
+        </p>
+        <div class="absolute right-[5%] md:right-[20%] top-1/2 -translate-y-1/2 w-32 md:w-64 h-40 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 pointer-events-none z-0">
+          <img src="angular.png" class="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+        </div>
+      </div>
+
+      <div class="group border-b border-white/10 py-12 flex flex-col md:flex-row md:items-center justify-between hover:px-8 transition-all duration-500 cursor-pointer relative item-service">
+        <div class="flex items-center gap-8 relative z-10">
+          <span class="text-slate-600 font-mono text-xl">02</span>
+          <h3 class="text-4xl md:text-6xl font-black text-white uppercase group-hover:text-blue-500 transition-colors">Mobile Apps</h3>
+        </div>
+        <p class="text-slate-400 max-w-md mt-4 md:mt-0 font-medium relative z-10 leading-relaxed">
+          Progettiamo applicazioni mobile native e cross-platform con Flutter. Una singola base di codice per iOS e Android che garantisce performance elevate e un'esperienza utente impeccabile.
+        </p>
+        <div class="absolute right-[5%] md:right-[20%] top-1/2 -translate-y-1/2 w-32 md:w-64 h-40 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 pointer-events-none z-0">
+          <img src="flutter.png" class="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+        </div>
+      </div>
+
+      <div class="group border-b border-white/10 py-12 flex flex-col md:flex-row md:items-center justify-between hover:px-8 transition-all duration-500 cursor-pointer relative item-service">
+      <div class="flex items-center gap-8 relative z-10">
+        <span class="text-slate-600 font-mono text-xl">03</span>
+        <h3 class="text-4xl md:text-6xl font-black text-white uppercase group-hover:text-emerald-400 transition-colors text-glow">Cloud VPS</h3>
+      </div>
+      
+      <div class="max-w-md mt-4 md:mt-0 relative z-10">
+        <p class="text-slate-400 font-medium leading-relaxed">
+          A differenza degli hosting condivisi standard, offriamo <span class="text-white">Vritual Private Server</span> dedicati e configurati per te. 
+          Risorse riservate, isolamento totale dei dati e una velocità di risposta del server che garantisce il <span class="text-emerald-400 font-bold">100/100 su PageSpeed</span>.
+        </p>
+      </div>
+
+      <div class="absolute right-[5%] md:right-[20%] top-1/2 -translate-y-1/2 w-32 md:w-64 h-40 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 pointer-events-none z-0">
+        <img src="server.png" class="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+      </div>
+    </div>
+    </div>
   </div>
+</section>
+
+<section id="metodo" class="py-32 px-6 bg-slate-950 relative overflow-hidden border-t border-white/5">
   
-  <div class="grid md:grid-cols-3 gap-8">
-    <div class="bg-slate-900 p-8 rounded-2xl border border-emerald-500/20 reveal text-center shadow-2xl scale-105 z-10">
-      <img src="server.png" alt="Server" class="w-16 h-16 mx-auto mb-4 object-contain">
-      <h3 class="text-white font-black mb-3 uppercase tracking-tighter text-xl">Infrastruttura</h3>
-      <p class="text-slate-300 text-sm font-medium">
-        Non usiamo hosting condivisi economici ma Hosting su server privati ottimizzati 
-        per <span class="dasa-gradient-neon">prestazioni estreme e gestiti completamente da noi.</span>
-      </p>
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <div class="text-center mb-24 reveal">
+      <h2 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4">
+        Il nostro <span class="dasa-gradient-neon">Workflow</span>
+      </h2>
+      <p class="text-slate-500 uppercase tracking-[0.3em] font-bold text-sm">Dall'analisi al lancio: un percorso d'eccellenza</p>
     </div>
 
-    <div class="bg-slate-800/20 p-8 rounded-2xl border border-white/5 reveal text-center group hover:border-red-500/50 transition-all">
-      <img src="angular.png" alt="Angular" class="w-16 h-16 mx-auto mb-4 object-contain transition-transform group-hover:scale-110">
-      <h3 class="text-white font-black mb-3 uppercase tracking-tighter">Angular</h3>
-      <p class="text-slate-500 text-sm font-medium">
-        Il cuore pulsante delle nostre Web App. Utilizziamo il framework di Google per creare interfacce fluide, 
-        veloci e scalabili, capaci di gestire migliaia di utenti simultanei senza rallentamenti,
-        <span class="dasa-gradient-neon">framework professionale per app scalabili e UX di alto livello.</span>
-      </p>
-    </div>
+    <div class="relative">
+      
+      <div class="hidden md:block absolute top-[45%] left-0 w-full h-[2px] z-0">
+        <div class="absolute inset-0 bg-white/5"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500 to-transparent w-1/3 animate-flow-line"></div>
+      </div>
 
-    <div class="bg-slate-800/20 p-8 rounded-2xl border border-white/5 reveal text-center group hover:border-green-500/50 transition-all">
-      <img src="nodeJs.png" alt="Node.js" class="w-16 h-16 mx-auto mb-4 object-contain transition-transform group-hover:scale-110">
-      <h3 class="text-white font-black mb-3 uppercase tracking-tighter">Node.js</h3>
-      <p class="text-slate-500 text-sm font-medium">
-        La potenza del backend moderno. Grazie all'architettura non-blocking, 
-        i nostri motori di calcolo elaborano flussi di dati massivi in tempo reale, garantendo 
-        <span class="dasa-gradient-neon">risposte istantanee ad ogni click.</span>
-      </p>
-    </div>
-  </div>
+      <div class="grid md:grid-cols-3 gap-8 relative z-10">
+        
+        <div class="reveal group relative bg-white/5 backdrop-blur-sm p-10 rounded-[2.5rem] border border-white/10 hover:border-emerald-500/50 hover:bg-white/[0.07] transition-all duration-500 shadow-2xl hover:-translate-y-4">
+          <div class="text-7xl font-black dasa-gradient-neon opacity-10 absolute top-6 right-8 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500">01</div>
+          
+          <div class="w-16 h-16 bg-emerald-500 text-slate-950 rounded-2xl flex items-center justify-center mb-10 shadow-[0_0_30px_rgba(16,185,129,0.4)] group-hover:rotate-[360deg] transition-transform duration-700 ease-in-out">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          
+          <h4 class="text-2xl font-black text-white uppercase mb-4 tracking-tighter group-hover:text-emerald-400 transition-colors">Analisi & Strategia</h4>
+          <p class="text-slate-400 font-medium leading-relaxed">
+            Non iniziamo mai senza una rotta chiara. Analizziamo il tuo mercato e i competitor per definire lo stack tecnologico più performante, trasformando la tua idea in un'architettura tecnica solida e scalabile.
+          </p>
+        </div>
 
-  <div class="grid md:grid-cols-3 gap-8 mt-8">
-    <div class="bg-slate-800/20 p-8 rounded-2xl border border-white/5 reveal text-center group hover:border-blue-600/50 transition-all">
-      <img src="typeScript.png" alt="TypeScript" class="w-12 h-12 mx-auto mb-4 object-contain transition-transform group-hover:scale-110">
-      <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-2">TypeScript</h4>
-      <p class="text-slate-500 text-xs font-medium">
-        La precisione è il nostro credo. Scriviamo codice tipizzato che 
-        <span class="dasa-gradient-neon">previene gli errori prima ancora che si verifichino, 
-        consegnandoti un software solido</span>, facile da aggiornare e privo di bug.
-      </p>
-    </div>
+        <div class="reveal group relative bg-white/5 backdrop-blur-sm p-10 rounded-[2.5rem] border border-white/10 hover:border-blue-500/50 hover:bg-white/[0.07] transition-all duration-500 shadow-2xl hover:-translate-y-4" style="transition-delay: 0.2s">
+          <div class="text-7xl font-black dasa-gradient-neon opacity-10 absolute top-6 right-8 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500">02</div>
+          
+          <div class="w-16 h-16 bg-blue-500 text-white rounded-2xl flex items-center justify-center mb-10 shadow-[0_0_30px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-500">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+          </div>
+          
+          <h4 class="text-2xl font-black text-white uppercase mb-4 tracking-tighter group-hover:text-blue-400 transition-colors">Sviluppo Agile</h4>
+          <p class="text-slate-400 font-medium leading-relaxed">
+            Il codice prende vita. Utilizziamo cicli di sviluppo iterativi che ti permettono di vedere i progressi in tempo reale. Ogni riga di codice è scritta a mano per garantire pulizia, sicurezza e una velocità senza compromessi.
+          </p>
+        </div>
 
-    <div class="bg-slate-800/20 p-8 rounded-2xl border border-white/5 reveal text-center group hover:border-cyan-500/50 transition-all">
-      <img src="tailwind.png" alt="Tailwind CSS" class="w-12 h-12 mx-auto mb-4 object-contain transition-transform group-hover:scale-110">
-      <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-2">Tailwind CSS</h4>
-      <p class="text-slate-500 text-xs font-medium">
-        Estetica e performance in un unico pacchetto. Progettiamo interfacce custom con design atomico, 
-        <span class="dasa-gradient-neon">riducendo il peso del sito dell'80% rispetto ai metodi tradizionali per una velocità mai vista.</span>
-      </p>
-    </div>
+        <div class="reveal group relative bg-white/5 backdrop-blur-sm p-10 rounded-[2.5rem] border border-white/10 hover:border-emerald-500/50 hover:bg-white/[0.07] transition-all duration-500 shadow-2xl hover:-translate-y-4" style="transition-delay: 0.4s">
+          <div class="text-7xl font-black dasa-gradient-neon opacity-10 absolute top-6 right-8 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500">03</div>
+          
+          <div class="w-16 h-16 bg-dasa-aura text-white rounded-2xl flex items-center justify-center mb-10 shadow-[0_0_30px_rgba(16,185,129,0.4)] group-hover:animate-pulse">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"></path></svg>
+          </div>
+          
+          <h4 class="text-2xl font-black text-white uppercase mb-4 tracking-tighter group-hover:text-emerald-400 transition-colors">Ottimizzazione & Lancio</h4>
+          <p class="text-slate-400 font-medium leading-relaxed">
+            Configuriamo la tua <span class="text-emerald-400 font-bold">VPS dedicata</span> per il massimo impatto. Effettuiamo stress-test rigorosi e ottimizzazioni SEO on-page per assicurarci velocità e posizionamento fin dal primo giorno.
+          </p>
+        </div>
 
-    <div class="bg-slate-800/20 p-8 rounded-2xl border border-white/5 reveal text-center group hover:border-blue-400/50 transition-all">
-      <img src="flutter.png" alt="Flutter" class="w-12 h-12 mx-auto mb-4 rounded-lg object-cover transition-transform group-hover:scale-110 shadow-lg">
-      <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-2">App Flutter</h4>
-      <p class="text-slate-500 text-xs font-medium">
-        Un solo codice, due mondi. Sviluppiamo applicazioni native per iOS e Android simultaneamente,
-        <span class="dasa-gradient-neon">dimezzando i tempi di sviluppo e mantenendo una fluidità di movimento a 60fps.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="progetti" class="py-32 px-6 bg-white/5" style="scroll-margin-top: 80px;">
-  <div class="max-w-7xl mx-auto text-center">
-    <h2 class="text-4xl font-black text-white mb-16 reveal uppercase tracking-tighter">Progetti <span class="dasa-gradient-aura">In Evidenza</span></h2>
-    <div class="bg-slate-900 border border-white/10 rounded-3xl p-10 hover:border-emerald-500 transition-all group max-w-3xl mx-auto shadow-2xl reveal">
-      <div class="text-emerald-400 font-mono text-xs mb-4 tracking-[0.3em] uppercase">Featured Case Study</div>
-      <h3 class="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tighter">Mambo Beauty Lab</h3>
-      <p class="text-slate-400 mb-8 leading-relaxed font-medium">Landing page con gestionale appuntamenti, area utente, area staff e admin con cash flow.</p>
-      <a href="https://mambobeautylab.it" target="_blank" class="inline-block text-white font-bold bg-dasa-aura px-8 py-3 rounded-xl hover:scale-105 transition-all uppercase tracking-tighter">Visita il progetto →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<footer id="contatti" class="py-32 px-6 bg-slate-900 border-t border-white/5 text-center">
-  <div class="reveal">
-    <h2 class="text-5xl font-black text-white mb-8 uppercase tracking-tighter">Partiamo?</h2>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dasadev.studio@gmail.com" target="_blank" class="text-xl md:text-5xl font-black dasa-gradient-neon hover:opacity-70 transition-all tracking-tighter">
-      dasadev.studio@gmail.com
-    </a>
-    <div class="mt-20 opacity-30 text-xs tracking-[0.3em] uppercase font-bold text-white">© 2026 DASA.</div>
+<style>
+@keyframes flow-line {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(300%); opacity: 0; }
+}
+
+.animate-flow-line {
+  animation: flow-line 3s infinite linear;
+}
+</style>
+
+<section id="progetti" class="py-32 px-6 bg-slate-950 relative overflow-hidden" style="scroll-margin-top: 80px;">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-20 reveal">
+      <h2 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-4">
+        Selected <span class="dasa-gradient-aura">Works</span>
+      </h2>
+      <p class="text-slate-500 uppercase tracking-[0.3em] font-bold text-sm">L'eccellenza trasformata in codice</p>
+    </div>
+
+    <div class="reveal group relative max-w-6xl mx-auto">
+      <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-[3rem] blur opacity-10 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+      
+      <div class="relative bg-slate-900 border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-500 group-hover:border-white/20">
+        <div class="grid md:grid-cols-2 items-center">
+          
+          <div class="p-10 md:p-16">
+            <div class="flex items-center gap-2 text-emerald-400 font-mono text-[10px] mb-8 tracking-[0.3em] uppercase">
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+              Featured Enterprise Solution
+            </div>
+            
+            <h3 class="text-5xl md:text-7xl font-black mb-6 text-white uppercase tracking-tighter leading-[0.8]">
+              Mambo <br><span class="text-slate-500 group-hover:text-white transition-colors duration-500">Beauty Lab</span>
+            </h3>
+            
+            <p class="text-slate-400 mb-8 leading-relaxed font-medium text-lg max-w-xl">
+              Abbiamo ingegnerizzato un ecosistema digitale d'élite. Una Landing Page Luxury integrata a una <span class="text-white">Web App proprietaria</span> che automatizza prenotazioni, Fidelity Card e Couponing. 
+              Il sistema include un <span class="text-emerald-400">Gestionale Admin</span> per il monitoraggio del Cash Flow e della produttività dello staff in tempo reale.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-10 border-l border-emerald-500/30 pl-6">
+              <div class="flex items-center gap-3 text-xs font-bold text-slate-300 uppercase tracking-tighter group/item">
+                <svg class="w-4 h-4 text-emerald-500 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Area Utente & App
+              </div>
+              <div class="flex items-center gap-3 text-xs font-bold text-slate-300 uppercase tracking-tighter group/item">
+                <svg class="w-4 h-4 text-emerald-500 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Cash Flow Automatizzato
+              </div>
+              <div class="flex items-center gap-3 text-xs font-bold text-slate-300 uppercase tracking-tighter group/item">
+                <svg class="w-4 h-4 text-emerald-500 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Fidelity & Coupon
+              </div>
+              <div class="flex items-center gap-3 text-xs font-bold text-slate-300 uppercase tracking-tighter group/item">
+                <svg class="w-4 h-4 text-emerald-500 group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Area Admin/Titolare
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3 mb-12">
+              <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-slate-300 uppercase tracking-widest">Angular 17</span>
+              <span class="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-slate-300 uppercase tracking-widest">Mobile App</span>
+              <span class="px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Cloud VPS</span>
+            </div>
+
+            <a href="https://mambobeautylab.it" target="_blank" 
+               class="inline-flex items-center gap-4 text-slate-950 font-black bg-emerald-400 px-10 py-5 rounded-2xl hover:bg-white hover:scale-105 transition-all uppercase tracking-tighter shadow-[0_10px_40px_rgba(16,185,129,0.2)]">
+              Esplora il Progetto
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+
+          <div class="relative h-[500px] md:h-full min-h-[500px] bg-slate-800/30 overflow-hidden flex items-center justify-center border-l border-white/5">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+            
+            <div class="relative z-10 w-[260px] h-[520px] bg-slate-950 rounded-[3rem] border-[8px] border-slate-800 shadow-[0_40px_100px_rgba(0,0,0,0.8)] overflow-hidden transform translate-y-16 group-hover:translate-y-4 transition-transform duration-700 ease-out">
+               <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-20"></div>
+               
+               <div class="h-full w-full p-4 pt-12 flex flex-col gap-4">
+                  <div class="w-24 h-3 bg-emerald-500/30 rounded animate-pulse"></div>
+                  <div class="w-full h-40 bg-slate-800/50 rounded-2xl border border-white/5"></div>
+                  <div class="space-y-3 mt-4">
+                     <div class="w-full h-2 bg-slate-800 rounded"></div>
+                     <div class="w-5/6 h-2 bg-slate-800 rounded"></div>
+                     <div class="w-full h-10 bg-emerald-500/10 rounded-xl mt-4 border border-emerald-500/20"></div>
+                  </div>
+                  <div class="mt-auto mb-6 w-full h-12 bg-emerald-500/20 border border-emerald-500/30 rounded-xl flex items-center justify-center font-mono text-[10px] text-emerald-400 font-bold tracking-widest uppercase">
+                      Prenota una Consulenza!
+                  </div>
+               </div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contatti" class="py-32 px-6 bg-slate-950 border-t border-white/5 relative overflow-hidden text-center">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-emerald-500/5 blur-[120px] pointer-events-none"></div>
+  
+  <div class="max-w-7xl mx-auto relative z-10 reveal">
+    <h2 class="text-4xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter leading-none">
+      Pronto a far <br><span class="dasa-gradient-neon">decollare</span> il tuo business?
+    </h2>
+
+    <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-medium leading-relaxed">
+      Prenota ora una <span class="text-white relative inline-block group/consult cursor-default">
+        consulenza gratuita
+        <span class="absolute bottom-0 left-0 w-full h-[1px] bg-emerald-400 scale-x-100 group-hover/consult:scale-x-110 transition-transform duration-500"></span>
+      </span> 
+      per analizzare il tuo progetto e definire insieme la strategia digitale più adatta alle tue esigenze.
+    </p>
+
+    <div class="flex flex-col items-center gap-12">
+      <a href="mailto:dasadev.studio@gmail.com" 
+         class="footer-mail text-2xl md:text-6xl font-black text-white hover:text-emerald-400 transition-all duration-500 tracking-tighter break-all relative group/mail">
+         dasadev.studio@gmail.com
+         <span class="block text-xs font-mono text-emerald-500 opacity-0 group-hover/mail:opacity-100 transition-opacity tracking-[0.3em] mt-2">SCRIVICI ORA</span>
+      </a>
+
+      <div class="flex items-center gap-6 mt-4">
+        <a href="https://www.instagram.com/dasa_devv/" target="_blank" 
+           class="group flex items-center gap-4 bg-white/5 border border-white/10 px-10 py-5 rounded-2xl hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 transition-all duration-500 shadow-xl">
+          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849s.012-3.584.07-4.849c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.28.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span class="text-white font-black uppercase tracking-widest text-sm">Seguici su Instagram</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-32 pt-12 border-t border-white/5">
+      <div class="text-[10px] tracking-[0.5em] uppercase font-bold text-slate-600">
+        © 2026 DASA STUDIO • ALL  RIGHTS RESERVED
+      </div>
+    </div>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 z-[150] p-4 rounded-full bg-slate-900 border border-emerald-500/50 text-emerald-400 shadow-2xl hover:bg-emerald-500 hover:text-white hover:scale-110 active:scale-95 transition-all group">
-  <svg class="w-6 h-6 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+<button (click)="scrollTo('top')" class="back-to-top group shadow-2xl overflow-hidden">
+  <svg class="w-6 h-6 transition-transform duration-300 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+  <div class="absolute inset-0 w-full h-full bg-white/20 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out z-0"></div>
 </button>

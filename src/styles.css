@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* --- TEMA E VARIABILI --- */
 @theme {
   --color-dasa-blue: #3b82f6;
   --color-dasa-dark: #0f172a;
@@ -18,22 +19,14 @@ body {
   overflow-x: hidden;
 }
 
-/* --- LOGO --- */
-.logo-container img {
-  border-radius: 12px;
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
-}
-.logo-container:hover img { transform: rotate(5deg) scale(1.1); }
-
-/* --- GRADIENTI --- */
+/* --- GRADIENTI E TESTI --- */
 .dasa-gradient-neon {
-  background: linear-gradient(90deg, #1e3a8a 0%, #10b981 100%);
+  background: linear-gradient(to right, #10b981, #3b82f6);
   -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
 }
+
 .dasa-gradient-aura {
   background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
   -webkit-background-clip: text;
@@ -41,44 +34,169 @@ body {
   color: transparent !important;
   display: inline-block;
 }
-.bg-dasa-aura { background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); }
 
-
-/* --- ANIMAZIONE TYPEWRITER --- */
-.typewriter {
-  border-right: 4px solid #10b981;
-  animation: blink 0.7s infinite step-end;
-  padding-right: 4px;
-  white-space: nowrap;
+.dasa-shimmer {
+  background: linear-gradient(to right, #10b981 20%, #3b82f6 40%, #60a5fa 60%, #10b981 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 5s linear infinite;
 }
 
-@keyframes blink {
-  from, to { border-color: transparent }
-  50% { border-color: #10b981 }
-}
+@keyframes shine { to { background-position: 200% center; } }
 
-/* Mantieni il resto del tuo CSS (Reveal, Hover card, ecc.) */
+/* --- ANIMAZIONI REVEAL --- */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.reveal.active { opacity: 1; transform: translateY(0); }
-
-/* --- HOVER BORDER CARD --- */
-.card-hover-border {
-  transition: all 0.4s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.card-hover-border:hover {
-  border: 1px solid #10b981;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-  transform: scale(1.02) rotate(0deg) !important;
+  filter: blur(5px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.reveal.active { 
+  opacity: 1; 
+  transform: translateY(0); 
+  filter: blur(0);
+}
 
+/* --- HERO & BACKGROUND --- */
+.grid-background {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black, transparent 90%);
+}
 
-/* --- MENU MOBILE --- */
-.translate-x-full { transform: translateX(100%); }
-.translate-x-0 { transform: translateX(0); }
-body:has(.opacity-100) { overflow: hidden; }
+.hero-glow {
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 80vw; height: 80vh;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  filter: blur(100px);
+  z-index: -1;
+  animation: hero-pulse 10s infinite alternate ease-in-out;
+}
+
+@keyframes hero-pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes slow-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 20px) scale(1.1); }
+  100% { transform: translate(-10px, -30px) scale(1); }
+}
+
+.animate-slow-drift { animation: slow-drift 15s infinite alternate ease-in-out; }
+
+/* --- ANIMAZIONE ESPLORA --- */
+#expand-circle {
+  opacity: 1; z-index: 50;
+  transition: transform 1.2s cubic-bezier(0.9, 0, 0.1, 1), opacity 0.5s ease;
+}
+
+.expand-active { transform: scale(150) !important; opacity: 1 !important; }
+
+.hero-fade-out {
+  opacity: 0 !important; filter: blur(20px); transform: scale(1.05); pointer-events: none;
+  transition: all 0.8s ease-in-out;
+}
+
+/* --- SERVIZI (Fix Mobile Images) --- */
+.item-service img {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+}
+
+@media (min-width: 768px) {
+  .item-service img {
+    right: 20%;
+    transform: translate(-20%, -50%) rotate(-10deg) scale(0.8);
+  }
+}
+
+.item-service:hover img {
+  transform: translate(0, -50%) rotate(5deg) scale(1.1) !important;
+  opacity: 1 !important;
+}
+
+/* --- FOOTER MAIL --- */
+.footer-mail {
+  position: relative; display: inline-block; line-height: 1.1; padding-bottom: 4px;
+}
+
+.footer-mail::after {
+  content: ''; position: absolute; width: 100%; height: 4px; bottom: 0; left: 0;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  transform: scaleX(0); transform-origin: bottom right;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.footer-mail:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+/* --- BACK TO TOP (Fix Scia) --- */
+@keyframes pulse-emerald-glow {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.back-to-top {
+  animation: pulse-emerald-glow 3s infinite;
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+  padding: 1rem; border-radius: 1.25rem;
+  background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1); color: #10b981;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
+  overflow: hidden; /* Fix: Nasconde il riflesso quando fuori */
+}
+
+.back-to-top:hover {
+  background: #10b981; color: #0f172a; transform: translateY(-8px) scale(1.1) rotate(5deg);
+}
+
+@keyframes arrow-bounce { from { transform: translateY(2px); } to { transform: translateY(-4px); } }
+.back-to-top:hover svg { animation: arrow-bounce 0.8s infinite alternate ease-in-out; }
+
+/* --- UI ELEMENTS --- */
+@keyframes floating {
+  0%, 100% { transform: translate(0, 0px) rotate(2deg); }
+  50% { transform: translate(0, -20px) rotate(3deg); }
+}
+.floating-card { animation: floating 6s ease-in-out infinite; }
+@keyframes slideInText {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideInText 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Effetto Underline doppio al passaggio */
+.group\/under:hover span {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Animazione di "respiro" per il badge VPS */
+.group\/vps:hover span {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+}
