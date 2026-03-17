@@ -1,3 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
 
-@import 'tailwindcss';
+@theme {
+  --color-dasa-blue: #3b82f6;
+  --color-dasa-dark: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; 
+}
+
+body {
+  background-color: var(--color-dasa-dark);
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* --- LOGO --- */
+.logo-container img {
+  border-radius: 12px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+.logo-container:hover img { transform: rotate(5deg) scale(1.1); }
+
+/* --- GRADIENTI --- */
+.dasa-gradient-neon {
+  background: linear-gradient(90deg, #1e3a8a 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  display: inline-block;
+}
+.dasa-gradient-aura {
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  display: inline-block;
+}
+.bg-dasa-aura { background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); }
+
+
+/* --- ANIMAZIONE TYPEWRITER --- */
+.typewriter {
+  border-right: 4px solid #10b981;
+  animation: blink 0.7s infinite step-end;
+  padding-right: 4px;
+  white-space: nowrap;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #10b981 }
+}
+
+/* Mantieni il resto del tuo CSS (Reveal, Hover card, ecc.) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- HOVER BORDER CARD --- */
+.card-hover-border {
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.card-hover-border:hover {
+  border: 1px solid #10b981;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  transform: scale(1.02) rotate(0deg) !important;
+}
+
+
+
+/* --- MENU MOBILE --- */
+.translate-x-full { transform: translateX(100%); }
+.translate-x-0 { transform: translateX(0); }
+body:has(.opacity-100) { overflow: hidden; }

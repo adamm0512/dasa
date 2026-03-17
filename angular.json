@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "f770b12f-88ec-42c8-9faf-4cf6bbd1484d"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -27,14 +28,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "security": {
-              "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "ssr": false
           },
           "configurations": {
             "production": {
@@ -43,11 +37,6 @@
                   "type": "initial",
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
